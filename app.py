@@ -25,8 +25,8 @@ st.sidebar.header("Model Parameters")
 beta = st.sidebar.slider("Beta (β)", 0.0, 1.0, 0.3, 0.01)
 gamma1 = st.sidebar.slider("Gamma 1 (γ₁)", 0.0, 1.0, 0.2, 0.01)
 gamma2 = st.sidebar.slider("Gamma 2 (γ₂)", 0.0, 1.0, 0.4, 0.01)
-u1 = st.sidebar.slider("u₁", 0.1, 5.0, 1.0, 0.1)
-u2 = st.sidebar.slider("u₂", 0.1, 5.0, 1.0, 0.1)
+u1 = st.sidebar.slider("u₁", 0.1, 1.0, 1.0, 0.1)
+u2 = st.sidebar.slider("u₂", 0.1, 1.0, 1.0, 0.1)
 
 # -----------------------------
 # Core Model

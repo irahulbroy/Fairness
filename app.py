@@ -152,3 +152,16 @@ if app_url:
     buf_qr.seek(0)  # Important: move cursor to start
     
     st.image(buf_qr, caption="Scan to open app", use_column_width=True)
+    
+    
+    # ---------------- Footer / Copyright ---------------- #
+st.markdown("---")
+st.markdown(
+    """
+    <div style='text-align: center; color: gray; font-size: 14px;'>
+        &copy; 2026 Rahul Roy. All Rights Reserved.<br>
+        <i>This educational simulation may not be reproduced or distributed without explicit permission.</i>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)

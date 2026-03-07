@@ -80,11 +80,13 @@ V_vals, Total_provider_vals, Total_surplus_vals, LHS_vals, RHS_vals = compute_mo
 # -----------------------------
 cols = st.columns(2)
 
+plt.rcParams.update({'text.usetex':True, 'font.size':20})
+
 # --- Top Left: Platform Revenue V(α) ---
 with cols[0]:
     fig1, ax1 = plt.subplots(figsize=(8,6))
     ax1.plot(alpha_grid[:len(V_vals)], V_vals, linewidth=2)
-    ax1.set_title("Platform Revenue V(α)")
+    ax1.set_title("Platform's Optimal Revenue vs. α")
     ax1.set_xlabel("α")
     ax1.set_ylabel("V(α)")
     ax1.grid(True)
@@ -93,12 +95,16 @@ with cols[0]:
     fig1.savefig(buf1, format="png", dpi=300, bbox_inches="tight")
     st.download_button("Download V(α) Plot", buf1.getvalue(), "platform_revenue.png", "image/png")
 
+optimal_idx = np.nanargmax(V_vals)
+ax1.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr'Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}')
+ax1.legend()
+
 # --- Top Right: Theorem Test LHS(α) vs RHS(α) ---
 with cols[1]:
     fig2, ax2 = plt.subplots(figsize=(8,6))
     ax2.plot(alpha_grid[:len(LHS_vals)], LHS_vals, label="LHS(α) – Retention Benefit")
     ax2.plot(alpha_grid[:len(RHS_vals)], RHS_vals, label="RHS(α) – Value of Unfairness")
-    ax2.set_title("Theorem Test")
+    ax2.set_title("Theorem 1 (Fairness as an Asset)")
     ax2.set_xlabel("α")
     ax2.set_ylabel("Marginal Values")
     ax2.legend()
@@ -113,27 +119,39 @@ cols2 = st.columns(2)
 with cols2[0]:
     fig3, ax3 = plt.subplots(figsize=(8,6))
     ax3.plot(alpha_grid[:len(Total_surplus_vals)], Total_surplus_vals, color='black', linewidth=2)
-    ax3.set_title("Social Surplus V(α) + W1*(α) + W2*(α)")
+    ax3.set_title("Social Surplus vs. α")
     ax3.set_xlabel("α")
-    ax3.set_ylabel("Social Surplus")
+    ax3.set_ylabel("V(α) + W1*(α) + W2*(α)")
     ax3.grid(True)
     st.pyplot(fig3)
     buf3 = io.BytesIO()
     fig3.savefig(buf3, format="png", dpi=300, bbox_inches="tight")
     st.download_button("Download Social Surplus", buf3.getvalue(), "social_surplus.png", "image/png")
 
+optimal_idx = np.nanargmax(V_vals)
+optimal_surplus_idx = np.nanargmax(Total_surplus_vals)
+ax2.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr'Platform Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}')
+ax2.axvline(alpha_grid[optimal_surplus_idx], color='black', linestyle='--', label=fr'Surplus Optimal $\alpha$: {alpha_grid[optimal_surplus_idx]:.2f}')
+ax2.legend()
+
 # --- Bottom Right: Total Provider Surplus W1*(α) + W2*(α) ---
 with cols2[1]:
     fig4, ax4 = plt.subplots(figsize=(8,6))
     ax4.plot(alpha_grid[:len(Total_provider_vals)], Total_provider_vals, color='magenta', linewidth=2)
-    ax4.set_title("Total Provider Surplus W1*(α) + W2*(α)")
+    ax4.set_title("Total Provider Surplus vs. α")
     ax4.set_xlabel("α")
-    ax4.set_ylabel("Provider Surplus")
+    ax4.set_ylabel("W(α) = W1*(α) + W2*(α)")
     ax4.grid(True)
     st.pyplot(fig4)
     buf4 = io.BytesIO()
     fig4.savefig(buf4, format="png", dpi=300, bbox_inches="tight")
     st.download_button("Download Provider Surplus", buf4.getvalue(), "provider_surplus.png", "image/png")
+
+optimal_idx = np.nanargmax(V_vals)
+optimal_earning_idx = np.nanargmax(Total_provider_vals)
+ax3.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr'Platform Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}')
+ax3.axvline(alpha_grid[optimal_earning_idx], color='black', linestyle='--', label=fr'Total Provider Optimal $\alpha$: {alpha_grid[optimal_earning_idx]:.2f}')
+ax3.legend()
 
 # -----------------------------
 # QR Code Section

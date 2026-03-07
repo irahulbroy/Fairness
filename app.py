@@ -80,8 +80,6 @@ V_vals, Total_provider_vals, Total_surplus_vals, LHS_vals, RHS_vals = compute_mo
 # -----------------------------
 cols = st.columns(2)
 
-plt.rcParams.update({'text.usetex':True, 'font.size':20})
-
 # --- Top Left: Platform Revenue V(α) ---
 with cols[0]:
     fig1, ax1 = plt.subplots(figsize=(8,6))

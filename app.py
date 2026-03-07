@@ -22,9 +22,9 @@ st.title("Fairness as an Asset – Interactive Model")
 # Sidebar Controls
 # -----------------------------
 st.sidebar.header("Model Parameters")
-beta = st.sidebar.slider("Beta (β)", 0.0, 1.0, 0.3, 0.01)
-gamma1 = st.sidebar.slider("Gamma 1 (γ₁)", 0.0, 1.0, 0.2, 0.01)
-gamma2 = st.sidebar.slider("Gamma 2 (γ₂)", 0.0, 1.0, 0.4, 0.01)
+beta = st.sidebar.slider("Beta (β)", 0.2, 1.0, 0.3, 0.01)
+gamma1 = st.sidebar.slider("Gamma 1 (γ₁)", 0.1, 0.9, 0.2, 0.01)
+gamma2 = st.sidebar.slider("Gamma 2 (γ₂)", 0.1, 0.9, 0.4, 0.01)
 u1 = st.sidebar.slider("u₁", 0.1, 1.0, 1.0, 0.1)
 u2 = st.sidebar.slider("u₂", 0.1, 1.0, 0.8, 0.1)
 

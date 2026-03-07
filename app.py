@@ -130,8 +130,8 @@ with cols2[0]:
 
 optimal_idx = np.nanargmax(V_vals)
 optimal_surplus_idx = np.nanargmax(Total_surplus_vals)
-ax2.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr'Platform Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}')
-ax2.axvline(alpha_grid[optimal_surplus_idx], color='black', linestyle='--', label=fr'Surplus Optimal $\alpha$: {alpha_grid[optimal_surplus_idx]:.2f}')
+ax2.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=f'Platform Optimal α: {alpha_grid[optimal_idx]:.2f}')
+ax2.axvline(alpha_grid[optimal_surplus_idx], color='black', linestyle='--', label=f'Surplus Optimal α: {alpha_grid[optimal_surplus_idx]:.2f}')
 ax2.legend()
 
 # --- Bottom Right: Total Provider Surplus W1*(α) + W2*(α) ---
@@ -149,8 +149,8 @@ with cols2[1]:
 
 optimal_idx = np.nanargmax(V_vals)
 optimal_earning_idx = np.nanargmax(Total_provider_vals)
-ax3.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr'Platform Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}')
-ax3.axvline(alpha_grid[optimal_earning_idx], color='black', linestyle='--', label=fr'Total Provider Optimal $\alpha$: {alpha_grid[optimal_earning_idx]:.2f}')
+ax3.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=f'Platform Optimal α: {alpha_grid[optimal_idx]:.2f}')
+ax3.axvline(alpha_grid[optimal_earning_idx], color='black', linestyle='--', label=f'Total Provider Optimal α: {alpha_grid[optimal_earning_idx]:.2f}')
 ax3.legend()
 
 # -----------------------------

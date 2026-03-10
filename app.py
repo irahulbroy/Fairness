@@ -102,7 +102,7 @@ with cols[1]:
     fig2, ax2 = plt.subplots(figsize=(8,6))
     ax2.plot(alpha_grid[:len(LHS_vals)], LHS_vals, label=r"Retention Benefit")
     ax2.plot(alpha_grid[:len(RHS_vals)], RHS_vals, label=r"Value of Unfairness")
-    ax2.set_ylim(0.08, 0.19)
+    ax2.set_ylim(0.05, 0.19)
     #ax2.set_title("Theorem 1 (Fairness as an Asset)")
     ax2.set_xlabel(r"$\alpha$")
     ax2.set_ylabel("Marginal Values")

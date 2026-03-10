@@ -25,8 +25,8 @@ st.sidebar.header("Model Parameters")
 beta = st.sidebar.slider("Beta (β)", 0.2, 1.0, 0.3, 0.01)
 gamma1 = st.sidebar.slider("Gamma 1 (γ₁)", 0.1, 0.9, 0.2, 0.01)
 gamma2 = st.sidebar.slider("Gamma 2 (γ₂)", 0.1, 0.9, 0.4, 0.01)
-u1 = st.sidebar.slider("u₁", 0.1, 1.0, 1.0, 0.1)
-u2 = st.sidebar.slider("u₂", 0.1, 1.0, 0.8, 0.1)
+u1 = st.sidebar.slider("u₁", 0.6, 1.0, 1.0, 0.05)
+u2 = st.sidebar.slider("u₂", 0.6, 1.0, 0.8, 0.05)
 
 # -----------------------------
 # Core Model
@@ -100,8 +100,8 @@ with cols[0]:
 # --- Top Right: Theorem Test LHS(α) vs RHS(α) ---
 with cols[1]:
     fig2, ax2 = plt.subplots(figsize=(8,6))
-    ax2.plot(alpha_grid[:len(LHS_vals)], LHS_vals, label=r"LHS($Retention Benefit")
-    ax2.plot(alpha_grid[:len(RHS_vals)], RHS_vals, label=r"RHS($Value of Unfairness")
+    ax2.plot(alpha_grid[:len(LHS_vals)], LHS_vals, label=r"Retention Benefit")
+    ax2.plot(alpha_grid[:len(RHS_vals)], RHS_vals, label=r"Value of Unfairness")
     #ax2.set_title("Theorem 1 (Fairness as an Asset)")
     ax2.set_xlabel(r"$\alpha$")
     ax2.set_ylabel("Marginal Values")
@@ -139,13 +139,13 @@ with cols2[1]:
     fig4, ax4 = plt.subplots(figsize=(8,6))
     ax4.plot(alpha_grid[:len(Total_provider_vals)], Total_provider_vals, color='magenta', linewidth=2)
     #ax4.set_title("Total Provider Surplus vs. $\alpha$")
-    ax4.set_xlabel("$\alpha$")
+    ax4.set_xlabel(r"$\alpha$")
     ax4.set_ylabel(r"$W(\alpha) = W_1^*(\alpha) + W_2^*(\alpha)$")
     ax4.grid(False)
     optimal_idx = np.nanargmax(V_vals)
     optimal_earning_idx = np.nanargmax(Total_provider_vals)
     ax4.axvline(alpha_grid[optimal_idx], color='red', linestyle='--', label=fr"Platform's Optimal $\alpha$: {alpha_grid[optimal_idx]:.2f}")
-    ax4.axvline(alpha_grid[optimal_earning_idx], color='black', linestyle='--', label=fr"Total Provider Optimal $\alpha$: {alpha_grid[optimal_earning_idx]:.2f}")
+    ax4.axvline(alpha_grid[optimal_earning_idx], color='black', linestyle='--', label=fr"Provider Earning Optimal $\alpha$: {alpha_grid[optimal_earning_idx]:.2f}")
     ax4.legend()
     st.pyplot(fig4)
     buf4 = io.BytesIO()
